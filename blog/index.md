@@ -3,7 +3,7 @@ date-: 2023-09-30
 layout: default.html
 ---
 # Digital Gardening
-These notes here are meant to be my corner of the Internet. I write about [[Galaxy S5 no battery mod|tinkering]], things that interest me and life. These notes are set to evolve over time, gradually growing greater and more varied like a little digital garden patch.
+These notes here are meant to be my corner of the Internet. I write about [[tinkering]], things that interest me and life. These notes are set to evolve over time, gradually growing greater and more varied like a little digital garden patch.
 
 These notes came to be after I read about an ethos and working method called <a href="https://maggieappleton.com/garden-history" target="_blank">Digital Gardening</a>, which offered a very refreshing respite from the rather performative view I used to have on personal blogs, how I should have _something_ to showcase, hosted somewhere, for someone to read and see what a great person I am. Very performative indeed. These pages are made with 11ty and the help of the excellent <a href="https://photogabble.co.uk/projects/eleventyjs-interlink-plugin/" target="_blank">Interlink plugin</a> which makes creating <a href="https://obsidian.md" target="_blank">Obsidian</a> style backlinks a breeze.
 
