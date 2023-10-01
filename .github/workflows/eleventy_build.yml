@@ -7,13 +7,20 @@ on:
 jobs:
   build_deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@master
-      - name: Build
-        uses: TartanLlama/actions-eleventy@master
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          args: --output /blog/_site --pathprefix 'blog/'
-          install_dependencies: true
+          node-version: latest
+
+      - name: Install dependencies & build
+      # npm build is defined in package.json
+        run: |
+          npm ci
+          npm run build
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
