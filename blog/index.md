@@ -13,5 +13,5 @@ I write these notes for myself, as well as for you dear visitor, in the hopes th
 
 ## Wander the garden:
 {% for post in collections.blog %}
-- <a href="{{ post.url }}">{{ post.data.title }}</a>
+- <a href="{{ post.url | url }}">{{ post.data.title }}</a>
 {% endfor %}
