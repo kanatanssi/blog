@@ -11,6 +11,4 @@ Like many others, I have a habit of keeping old phones around as "backups" in ca
 
 When one of these backups of mine - a Samsung Galaxy S5 I had used as my daily driver years ago - inevitably did build up the spiciness and the battery started swelling, I extracted the battery, but felt hesitant to throw the whole phone out. It was still a functional piece of electronics, just needed something to power it with. A new battery was out of the question - this was merely an old backup phone after all, and a new battery for such an old phone would have been prohibitively expensive. Yet powering the phone without a battery deprives the phone of its its most desirable trait, i.e. its mobility. Nonetheless, I set out to seek a way to best utilize my [[Galaxy S5 no battery mod|newly tethered device]].
 
-Through some quick searching, I found out about [[postmarketos|postmarketos.org]], a Linux distribution for mobile phones (and not-so-mobile phones without batteries too). 
-
-### 
+Through some quick searching, I found out about  <a href="https://postmarketos.org" target="_blank" >postmarketos</a>, a Linux distribution for mobile phones (and not-so-mobile phones without batteries too). 
