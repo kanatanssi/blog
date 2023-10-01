@@ -1,7 +1,6 @@
 ---
-year: 2022
+date: 2022-11-01
 tags: blog
-layout: page.html
 ---
 Ultimately a rather straightforward operation.
 
