@@ -1,0 +1,18 @@
+---
+layout: default.html
+---
+<title>{{ title }}</title>
+<h1>{{ title }}</h1>
+<article>
+    {{ content }}
+</article>
+<hr>
+
+{% if backlinks.length > 0 %}
+        <h3 class="backlinks-title larger">Backlinks</h3>
+        <ul class="backlinks-container">
+            {% for link in backlinks %}
+                <li class="backlink"><a href="{{ link.url }}" class="backlink__link">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+{% endif %}
