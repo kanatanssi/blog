@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Colors */
+:root {
+    --heading-color:#384D48;
+    --body-color: #2D0320;
+    background-color: #f5e3e0;
+}
+
+/* Style links */
+a:link {color: #139A43}
+a:visited {color: #139A43}
+a:hover {color: #0EAB89}
+a:active {color: #0EAB89}
+
+html {
+    font-size:  100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    line-height: 1.65;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    margin: 0 24px;
+}
+
+main {
+    flex-grow: 1;
+    max-width: 60ch;
+    width: 100%;
+    margin: 0 auto;
+}
+
+a[href] {
+    color: var(--accent);
+}
+
+a[href]:hover {
+    text-decoration: none;
+}
+
+a[href]:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.footnotes {
+    font-size: 0.8em;
+}
+
+/* Typography */
+p {margin-bottom: 1.15rem;}
+
+h1, h2, h3, h4 {
+  margin: 2.75rem 0 1.05rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+/* Style headings */
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-size: 3rem;
+  }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Common styling for all headings */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+p, li {
+    margin: 1rem 0;
+    color: var(--body-color);
+  }
+
+/* backlinks */
+.backlinks-title {
+    margin-bottom: 0;
+}
+
+.backlinks-container {
+    margin-top: 0;
+}
+
+.backlinks-default {
+    margin-top: 0;
+    margin-left: 16px;
+    color: var(--grey);
+}
+
+.backlink {
+    width: fit-content;
+    position: relative;
+}
+
+.backlink:hover {
+    padding-right: 4px; /* Allow mouse to travel between link and modal */
+}
+
+.backlink:hover .backlink__preview {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a href="/" class="page-header__logo" title="Return to homepage">
+            <img src="/_includes/logo.png" alt="" width="48">
+        </a>
+    </header>
+    <main>
+        <title>My old phone is my new server</title>
+<h1>My old phone is my new server</h1>
+<article>
+    <p>Much like <a href="/Beaglebone salvaging/">Beaglebone salvaging</a>, another small project of mine to <a href="/tinkering/">utilize "scavenged" electronics</a>.</p>
+<p>I have always been bothered by the short life-cycle of a modern smartphone. I often wonder to myself whether these marvels of technology really do (need to) expire within two-three years of purchase. Is there really no more life left to them once they no longer travel with us in our pocket every day?</p>
+<p>Like many others, I have a habit of keeping old phones around as &quot;backups&quot; in case I ever need them. The habit has been handy the few times I have indeed needed a spare phone, but not really frequently enough to warrant the risk of the old phone's battery going all spicy pillow and expanding after long periods of not being used, and then suddenly getting recharged to full capacity for a few days time before ultimately ending up to gather dust at the back of the drawer.</p>
+<p>When one of these backups of mine - a Samsung Galaxy S5 I had used as my daily driver years ago - inevitably did build up the spiciness and the battery started swelling, I extracted the battery, but felt hesitant to throw the whole phone out. It was still a functional piece of electronics, just needed something to power it with. A new battery was out of the question - this was merely an old backup phone after all, and a new battery for such an old phone would have been prohibitively expensive. Yet powering the phone without a battery deprives the phone of its its most desirable trait, i.e. its mobility. Nonetheless, I set out to seek a way to best utilize my <a href="/Galaxy S5 no battery mod/">newly tethered device</a>.</p>
+<p>Through some quick searching, I found out about  <a href="https://postmarketos.org" target="_blank" >postmarketos</a>, a Linux distribution for mobile phones (and not-so-mobile phones without batteries too).</p>
+
+</article>
+<hr>
+
+
+    </main>
+    
+    <footer>
+
+    </footer>
+</body>
+</html>

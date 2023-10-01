@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Colors */
+:root {
+    --heading-color:#384D48;
+    --body-color: #2D0320;
+    background-color: #f5e3e0;
+}
+
+/* Style links */
+a:link {color: #139A43}
+a:visited {color: #139A43}
+a:hover {color: #0EAB89}
+a:active {color: #0EAB89}
+
+html {
+    font-size:  100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    line-height: 1.65;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    margin: 0 24px;
+}
+
+main {
+    flex-grow: 1;
+    max-width: 60ch;
+    width: 100%;
+    margin: 0 auto;
+}
+
+a[href] {
+    color: var(--accent);
+}
+
+a[href]:hover {
+    text-decoration: none;
+}
+
+a[href]:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.footnotes {
+    font-size: 0.8em;
+}
+
+/* Typography */
+p {margin-bottom: 1.15rem;}
+
+h1, h2, h3, h4 {
+  margin: 2.75rem 0 1.05rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+/* Style headings */
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-size: 3rem;
+  }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Common styling for all headings */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+p, li {
+    margin: 1rem 0;
+    color: var(--body-color);
+  }
+
+/* backlinks */
+.backlinks-title {
+    margin-bottom: 0;
+}
+
+.backlinks-container {
+    margin-top: 0;
+}
+
+.backlinks-default {
+    margin-top: 0;
+    margin-left: 16px;
+    color: var(--grey);
+}
+
+.backlink {
+    width: fit-content;
+    position: relative;
+}
+
+.backlink:hover {
+    padding-right: 4px; /* Allow mouse to travel between link and modal */
+}
+
+.backlink:hover .backlink__preview {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a href="/" class="page-header__logo" title="Return to homepage">
+            <img src="/_includes/logo.png" alt="" width="48">
+        </a>
+    </header>
+    <main>
+        <title>Beaglebone salvaging</title>
+<h1>Beaglebone salvaging</h1>
+<article>
+    <p>Whenever I see what seems to be perfectly functioning electronics trashed, I cannot help but wonder: &quot;could that still serve a purpose? Maybe this still has a life in it?&quot;. A lot of the time the answer is, simply put: no, there is no life left in it. People often have a legitimate reason for throwing stuff away (i.e. it doesn't work), and it's better to err on the side of caution with this brand of dumpster diving (and leave that dumped microwave alone!). Nonetheless, I find things like gamepads, microcontrollers, old phones and such the most interesting targets when it comes to <a href="/tinkering/">turning trash into treasure</a>.</p>
+<p>Guided by this style of pondering on the state of things, I dug into a dumpster outside my student dorm on an autumn afternoon in 2017 and fished out a metallic box with a tangle of wires dangling from it, and a dusty air about it. Thinking it a computer, I tore into it and cracked open its silvery, undecorated surface, only to find the case mostly empty - disregarding the thick layer of dust and birch seeds the covered most surfaces inside, the only things beneath the case were four silicon boards screwed to the bottom with some pretty massive heat sinks.</p>
+<p>With a bit of investigation, I soon learned that what I had picked up was an old <a href="https://www.businessinsider.com/most-powerful-bitcoin-miner-knc-jupiter-2013-12" target="_blank">KnC Jupiter</a> brand bitcoin miner (identified based on a sticker on the side of the casing photos online). The massive heatsinks provided cooling for the dedicated asic chips and my theory was that the birch seeds had ended up inside the case when it the miner was ran outside, perhaps on a balcony, for cooling. I ended up tossing most of the miner into the nearest e-waste bin, but not before I had salvaged a stripped down, but functional <a href="" target="_blank">Beaglebone Black</a> from the miner. In its past life it had been used to coordinate the asics and their hashing tasks, but liberated from its silvery prison, this beagle was looking at a cozy retirement living indoors and running some simple services for my local network.</p>
+<p>(todo: this is where a picture of the stripped down board will go at some point)</p>
+<p>Much of the Beaglebone had been stripped down, such as the HMDI connector and chip, which is understandable given the board's past life as an integrated controller within the miner. This also included the power jack and both usb ports that the board would normally have, which are also the primary methods to power the board. No fear, I thought, and simply used a cut usb cord with stripped power wires gently pressed against the contacts where the usb port would have been to power the board for my initial trials. Looking back at it, there probably would have been a better way to do this (like using the connectors for battery power), but it worked.</p>
+<p>(todo: this is where a picture of my poor soldering work will go at some point)</p>
+<p>For a more permanent solution, I did solder on a micro-usb connector. I did a rather poor job at it with my mediocre-at-best skill with the soldering iron and I may have made two of the four contacts for the usb port unusable, rendering data transfer unavailable, but the board was at least now reliably powered. I still look back at this recovery job, and even with the somewhat botched soldering, I can't help but feel proud of the troubleshooting process, however small, that lead me to come to the possession of a functioning piece of reclaimed electronics.</p>
+<p>Getting the board powered was only half the job, as I had to now put the reclaimed board to work. Otherwise I feel like all the work would have been for naught, in a way. After some trials, I got the board to boot off the sd card with a image of Debian provided by the manufacturer. I could not get the image written to the eMMC onboard memory, which could very well be due to some shenanigans related to the board's past mining career. Given that the base Debian image would keep writing onto the card while running - logs and such - there were some challenges in the horizon in terms of the longevity of the board. Over time keeping the board running as is would wear out the sd card, and I had yet to solder in a host usb port to run an ssd with the board.</p>
+<p>A potential solution to running this board would be to boot off the network, and keep the system running from memory if possible, but these concerns were for a future me. Satisfied for the time being with the board running with stable power and an operating system, I had the board serve my home network in my dorm apartment with <a href="https://pi-hole.net/" target="_blank">Pihole</a>, which it did without much interruption until I eventually moved out of the dorm a year or so later.</p>
+
+</article>
+<hr>
+
+
+        <h3 class="backlinks-title larger">Backlinks</h3>
+        <ul class="backlinks-container">
+            
+                <li class="backlink"><a href="/My old phone is my new server/" class="backlink__link">My old phone is my new server</a></li>
+            
+        </ul>
+
+    </main>
+    
+    <footer>
+
+    </footer>
+</body>
+</html>
