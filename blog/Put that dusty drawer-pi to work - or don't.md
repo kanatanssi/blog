@@ -1,3 +1,9 @@
+---
+date: 2023-11-18
+tags: blog
+templateEngineOverride: md
+---
+
 I have a theory that computers and developers live in a symbiotic relationship akin to trees and fungus. The two exist, interwoven in a mutually beneficial relationship. In a forest, this relationship occasionally manifests itself visually in the form of a mushroom, whereas in the dwelling of a developer a parallel of this would be the random electronics that seem to grow out of nowhere to clutter the table space and backs-of-drawers (another similar example is literally any human inhabitation and wooden pallets, I swear those things naturally occur where ever humans go). 
 
 A few of such wonders of nature had sprung into existence in my home, taking the the form of the original Raspberry Pi, sitting together like a sprawling colony of silicone fungi. Perhaps the dust could be shaken off and the delicate dance of connections and components could be reawoken to do *something* other than sit on the shelf gathering dust. Even with its meagre at best specs, on today's standards, the Pis could still maybe run some very lightweight tasks or services for the home network.
