@@ -1,0 +1,7 @@
+- my wish is to take the few original pi's sitting in my drawer into use to run some very lightweight tasks / services - and also play around with pixie and the network in general
+- the original raspberry pi does not have the capability to boot over network (or usb) built in
+	- there's no bios that would normally do this stuff, even if arm chips are capable
+	- running off the sd is possible, but not adviseable because of the finite lifespan of the sd cards and the pretty crap i/o
+- but! Using a "sacrifical" sd card (i.e. a card of just about any size above zero that you don't mind staying with the pi) you can have the pi boot off the sd card and then load the operating system over network, meaning the card does not get written to after the initial load
+	- https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-boot-modes
+- alpine, which I've chosen simply because I have some portmarketos hosts to begin with, requires a minimum of 256mb of memory, just about fitting with the original pi (for now anyway)
