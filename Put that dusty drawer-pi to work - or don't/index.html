@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Colors */
+:root {
+    --heading-color:#384D48;
+    --body-color: #2D0320;
+    background-color: #f5e3e0;
+}
+
+/* Style links */
+a:link {color: #139A43}
+a:visited {color: #139A43}
+a:hover {color: #0EAB89}
+a:active {color: #0EAB89}
+
+html {
+    font-size:  100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    line-height: 1.65;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    margin: 0 24px;
+}
+
+main {
+    flex-grow: 1;
+    max-width: 60ch;
+    width: 100%;
+    margin: 0 auto;
+}
+
+a[href] {
+    color: var(--accent);
+}
+
+a[href]:hover {
+    text-decoration: none;
+}
+
+a[href]:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.footnotes {
+    font-size: 0.8em;
+}
+
+/* Typography */
+p {margin-bottom: 1.15rem;}
+
+h1, h2, h3, h4 {
+  margin: 2.75rem 0 1.05rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+/* Style headings */
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-size: 3rem;
+  }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Common styling for all headings */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+p, li {
+    margin: 1rem 0;
+    color: var(--body-color);
+  }
+
+/* backlinks */
+.backlinks-title {
+    margin-bottom: 0;
+}
+
+.backlinks-container {
+    margin-top: 0;
+}
+
+.backlinks-default {
+    margin-top: 0;
+    margin-left: 16px;
+    color: var(--grey);
+}
+
+.backlink {
+    width: fit-content;
+    position: relative;
+}
+
+.backlink:hover {
+    padding-right: 4px; /* Allow mouse to travel between link and modal */
+}
+
+.backlink:hover .backlink__preview {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <a href="/blog/" class="page-header__logo" title="Return to homepage">
+            <img src="/blog/_includes/logo.png" alt="" width="48">
+        </a>
+    </header>
+    <main>
+        <title>Put that dusty drawer-pi to work - or don't</title>
+<h1>Put that dusty drawer-pi to work - or don't</h1>
+<article>
+    <p>I have a theory that computers and developers live in a symbiotic relationship akin to trees and fungus. The two exist, interwoven in a mutually beneficial relationship. In a forest, this relationship occasionally manifests itself visually in the form of a mushroom, whereas in the dwelling of a developer a parallel of this would be the random electronics that seem to grow out of nowhere to clutter the table space and backs-of-drawers (another similar example is literally any human inhabitation and wooden pallets, I swear those things naturally occur where ever humans go).</p>
+<p>A few of such wonders of nature had sprung into existence in my home, taking the the form of the original Raspberry Pi, sitting together like a sprawling colony of silicone fungi. Perhaps the dust could be shaken off and the delicate dance of connections and components could be reawoken to do <em>something</em> other than sit on the shelf gathering dust. Even with its meagre at best specs, on today's standards, the Pis could still maybe run some very lightweight tasks or services for the home network.</p>
+<p>I planned for network booting and running the Pis off a disk shared over the network for the following reasons:</p>
+<ul>
+<li>I wished to play around with PXE (pronounced &quot;pixie&quot;) for fun and profit</li>
+<li>I did not have enough of the old bulky sd cards that the original Pi consumes</li>
+</ul>
+<p>My first challenge with the above plan arose just as soon as I had begun working on it - the original raspberry pi does not have the capability to boot over network (or usb) built in. Running off an sd card is possible, and very normal,  but not really advisable in the longer run given the finite lifespan of sd cards used in such a manner, and their pretty crap i/o in general (not that I honestly think the i/o would become an issue with the light use I had in mind for these devices, but still).</p>
+<p>But! Checking out the documentation for the Raspberry pi and its <a href="https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-boot-modes" target="_blank">bootmodes</a>, turns out using a &quot;sacrifical&quot; sd card (i.e. a card of just about any size above zero that you don't mind staying with the pi) you can have the pi boot off the sd card and then load the operating system over network, meaning the card does not get written to after the initial load and all of this effectively works like network booting would.</p>
+<p>For the operating system I decided to give Alpine a shot - mostly because I already had <a href="/blog/My old phone is my new server/">an Alpine host in my home network</a>, but also because it can run off the measly 256mb of memory the original pi has. For my netbooting solution I went for Pixiecore, lured by its promises of convenience, which upon searching produces an intriguing mix of search results ranging from slightly esoteric and impractical fashion to server infrastructure management.</p>
+<p>To run Pixiecore, I used the <a href="https://nixos.wiki/wiki/Netboot" target="_blank">available config for Nixos</a>. I picked the armhf image for Alpine linux (the original pi is very old and does not support armv7 or aarch64). I also referenced <a href="https://medium.com/@peter.bolch/how-to-netboot-with-ipxe-6191ed711348" target="_blank">an article on setting up Alpine over netboot</a>.</p>
+<p>My Pixiecore config was roughly as follows:</p>
+<pre><code>services.pixiecore = {
+    enable = true;
+    # Don't bind to dhcp port, since dhcp is handled elsewhere
+    dhcpNoBind = true;
+    kernel = &quot;/home/username/boot/vmlinuz-rpi&quot;;
+    initrd = &quot;/home/username/boot/initramfs-rpi&quot;;
+    # The alpine netboot wikipage defines some arguments as required
+    # ip=dhcp, self-explanatory
+    # alpine_repo, ditto
+    # modloop, load additional kernel modules found in the netboot package
+    # pixiecore serves them via http via the templating function below
+    # Note use of backticks for the template because of Go
+    cmdLine = &quot;ip=dhcp alpine_repo=http://dl-cdn.alpinelinux.org modloop={{ ID `/home/uille/boot/modloop-rpi` }}&quot;;
+};
+</code></pre>
+<p>After some attempts, I eventually had to stop for the night. Unfortunately the process had been less smooth than I had hoped for from here on out. I had chosen this approach for its convenience, but the netbooting proved itself rather finicky - I would see traffic in the network that would imply the pi was requesting for the operating system, but ultimately saw little activity on the pi itself.</p>
+<p>I also began doubting my purposes for setting all of this up - running a dedicated host for the &quot;small and lightweight services&quot; that I had in mind seemed counterintuitive, since a container or such on one of my larger, already up and running hosts could get the job easier for less effort. Perhaps I was overtaken by the enthusiasm to find a purpose for these pis, since I am prone to finding solutions before finding problems to solve when it comes to tinkering.</p>
+<p>In the end, after shelving this project for a while (effectively landing the pis back in their dusty back of the drawer), I decided it was time for these brave Raspberry pis to retire from drawer duty and donated them to a local electronics hobbyist group. Good luck out there, brave drawer-pis!</p>
+
+</article>
+<hr>
+
+
+    </main>
+    
+    <footer>
+
+    </footer>
+</body>
+</html>
