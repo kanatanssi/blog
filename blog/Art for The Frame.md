@@ -1,0 +1,1 @@
+- ideal resolution is 3840 x 2160, higher resolution images will eventually just show as unavailable on the tv
