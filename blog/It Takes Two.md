@@ -1,0 +1,14 @@
+- felt like a big studio game
+- a lot of commute
+- appreciated the different mechanics you have for the characters across the levels
+- ... but the levels themselves were extremely streamlined
+- big environments (with a lot of variety!), but the game discourages exploration (with invisible walls and death walls)
+- felt like developers wanted to deliver a cinematic experience
+	- player felt like an observer at times
+- somehow May felt more impactful
+	- Rose's departure felt sudden (childlike wonder at all the poltergeist moving items around the house)
+	- Rose's departure being solved in the ending cutscene felt like a missed opportunity - would have created tension and urgency had the characters seen that before they were returned to humans, would have also added some dimension to Dr. Hakim by potentially making them fallible ("I didn't mean for this to happen, I kept you here too long")
+- May and Cody showed little to no remorse for killing or hurting others. May and Cody are immortal, but it's clear that others aren't. Their lack of empathy towards others makes it hard to believe they have empathy towards each other. 
+- The ending felt forced. Predicted, but forced. Would've been better if the kiss didn't happen, but they learned to respect and care for each other as adults.
+- felt like the marriage had run its course and there was little in terms of passion for the two to awaken - would have been better without the "happily ever after trope"
+- may and cody's problem is not their marriage falling apart, but that they are kinda despicable people
