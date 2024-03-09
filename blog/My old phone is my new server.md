@@ -3,7 +3,7 @@ date: 2023-01-01
 tags: blog
 ---
 
-Much like [[Beaglebone salvaging|Beaglebone salvaging]], another small project of mine to [[tinkering|utilize "scavenged" electronics]].
+Much like [[Beaglebone salvaging]], another small project of mine to [[tinkering|utilize "scavenged" electronics]].
 
 I have always been bothered by the short life-cycle of a modern smartphone. I often wonder to myself whether these marvels of technology really do (need to) expire within two-three years of purchase. Is there really no more life left to them once they no longer travel with us in our pocket every day?
 
